@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'quickstart.apps.QuickstartConfig',
     'rest_framework',
-    'tutorial',
 ]
 
 MIDDLEWARE = [

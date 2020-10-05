@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
-from quickstart.serializers import UserSerializer, GroupSerializer
+from quickstart.serializers import UserSerializer, GroupSerializer, PizzaSerializer
 from quickstart.models import Pizza
 from django.views.generic.detail import DetailView
 
@@ -26,5 +26,9 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-class PizzaList(DetailView):
-    model = Pizza
+
+class PizzaList(viewsets.ModelViewSet):
+    queryset = Pizza.objects.all()
+    serializer_class = PizzaSerializer
+
+

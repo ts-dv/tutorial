@@ -21,11 +21,9 @@ Including another URLconf
 # ]
 
 from django.urls import include, path
-from django.conf.urls import url
 from rest_framework import routers
 from quickstart import views
-from quickstart import models
-from quickstart.views import PizzaList
+
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -34,5 +32,5 @@ router.register(r'groups', views.GroupViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('pizza/', PizzaList.as_view(), name = 'pizza-pizza')
+    path('pizza/', include(("quickstart.urls", "quickstart"), namespace="pizza-pizza"))
 ]
